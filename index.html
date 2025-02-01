@@ -15,11 +15,11 @@
     }
 
     [data-theme="light"] {
-      --bg: #756146;  /* Darker beige (more OSRS parchment-like) */
-      --text: #4a321c; /* Dark brown text */
-      --accent: #b58e5e; /* Soft gold/brown accent */
-      --border: #000000; /* Softer brown borders */
-      --card-bg: #e0c8a0; /* Light parchment card background */
+      --bg: #756146;
+      --text: #4a321c;
+      --accent: #b58e5e;
+      --border: #000000;
+      --card-bg: #e0c8a0;
     }
 
     * {
@@ -28,19 +28,16 @@
       padding: 0;
     }
 
-    /* Container for buttons */
-    /* Container for buttons */
     .top-right-buttons {
       position: fixed;
       top: 1rem;
       right: 1rem;
       display: flex;
       align-items: center;
-      gap: 1rem; /* Space between theme toggle & Discord */
-      z-index: 100; /* Ensures buttons appear above other elements */
+      gap: 1rem;
+      z-index: 100;
     }
 
-    /* Discord Button */
     .discord-button {
       display: flex;
       align-items: center;
@@ -59,12 +56,6 @@
       transition: transform 0.2s ease-in-out;
     }
 
-    /* Hover effect */
-    discord-button:hover .discord-icon {
-     transform: scale(1.1);
-    }
-
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -73,14 +64,12 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    /* Container & Layout */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 2rem;
     }
 
-    /* Main Title */
     .main-title {
       font-family: 'Verdana', sans-serif;
       text-align: center;
@@ -93,12 +82,10 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
 
-    /* Adjust for light mode */
     [data-theme="light"] .main-title {
-      text-shadow: 2px 2px 4px rgba(102, 77, 48, 0.7); /* Softer brown shadow */
+      text-shadow: 2px 2px 4px rgba(102, 77, 48, 0.7);
     }
 
-    /* Theme Toggle (No changes from previous) */
     .theme-toggle {
       background: linear-gradient(135deg, #1e1e1e, #333);
       border: 2px solid var(--border);
@@ -136,7 +123,6 @@
       transform: rotate(180deg);
     }
 
-    /* Search Bar */
     .search-bar {
       margin: 2rem 0;
     }
@@ -152,7 +138,33 @@
       outline: none;
     }
 
-    /* Plugin Grid */
+    .category-filters {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .category-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .category-btn.active {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+
+    .category-btn:hover {
+      transform: scale(1.05);
+    }
+
     .plugin-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -186,7 +198,6 @@
       object-fit: contain;
     }
 
-    /* Modal (Pop-up Window) for Plugin Details */
     .modal {
       display: none;
       position: fixed;
@@ -200,9 +211,11 @@
       justify-content: center;
       align-items: center;
     }
+
     .modal.show {
-      display: flex; /* use flex to center the contents */
+      display: flex;
     }
+
     .modal-content {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -216,12 +229,12 @@
 
     .modal-header {
       display: flex;
-      align-items: center; /* Align items vertically */
-      gap: 1rem; /* Add spacing between icon and text */
+      align-items: center;
+      gap: 1rem;
     }
 
     .modal-header img {
-      width: 48px; /* Adjust size of the icon */
+      width: 48px;
       height: 48px;
     }
 
@@ -234,6 +247,7 @@
       font-weight: bold;
       cursor: pointer;
     }
+
     .close:hover, .close:focus {
       color: var(--accent);
       text-decoration: none;
@@ -252,16 +266,17 @@
       padding-left: 1.5rem;
       margin: 1rem 0;
     }
+
     .features-list li::marker {
       color: #00a8ff;
       content: "★ ";
     }
+
     .requirements-list li::marker {
       color: var(--accent);
       content: "➤ ";
     }
 
-    /* We'll style code blocks or inline code from backticks. */
     code {
       background: #2d2d2d;
       color: #e6e6e6;
@@ -269,6 +284,7 @@
       padding: 0.2rem 0.4rem;
       border-radius: 4px;
     }
+
     pre {
       background: #2d2d2d;
       color: #e6e6e6;
@@ -280,35 +296,39 @@
       white-space: pre;
     }
 
-    /* UseCase container for partial code snippet usage. */
     .usecase-section {
       margin: 1rem 0;
     }
   </style>
 </head>
 <body data-theme="dark">
-    <div class="top-right-buttons">
-        <a href="https://discord.gg/ghostlite" target="_blank" class="discord-button">
-            <img src="icons/discord_icon.png" alt="Discord" class="discord-icon">
-        </a>
-        <button class="theme-toggle" onclick="toggleTheme()">
-            <span class="theme-icon">🌙</span>
-        </button>
-    </div> 
+  <div class="top-right-buttons">
+    <a href="https://discord.gg/ghostlite" target="_blank" class="discord-button">
+      <img src="icons/discord_icon.png" alt="Discord" class="discord-icon">
+    </a>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <span class="theme-icon">🌙</span>
+    </button>
+  </div> 
   <div class="container">
     <h1 class="main-title">GhostLite Plugin Manual</h1>
-    
 
-    <!-- Search Bar -->
+    <div class="category-filters">
+      <button class="category-btn active" data-category="all">All</button>
+      <button class="category-btn" data-category="skilling">Skilling</button>
+      <button class="category-btn" data-category="minigames">Minigames</button>
+      <button class="category-btn" data-category="pvm">PvM</button>
+      <button class="category-btn" data-category="pvp">PvP</button>
+      <button class="category-btn" data-category="utility">Utility</button>
+    </div>
+
     <div class="search-bar">
       <input type="text" id="pluginSearch" placeholder="Search plugins..." autocomplete="off">
     </div>
 
-    <!-- Plugin Grid -->
     <div class="plugin-grid" id="pluginGrid"></div>
   </div>
 
-  <!-- Modal for Plugin Details -->
   <div id="pluginModal" class="modal" onclick="closePluginModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <span class="close" onclick="closePluginModal(event)">&times;</span>
@@ -316,15 +336,10 @@
         <img id="modalIcon" class="modal-plugin-icon" alt="Plugin Icon">
         <h2 id="modalTitle"></h2>
       </div>
-
-      <!-- FEATURES FIRST -->
       <h3>Features</h3>
       <ul class="features-list" id="modalFeatures"></ul>
-
       <h3>Requirements</h3>
       <ul class="requirements-list" id="modalRequirements"></ul>
-
-      <!-- Use Case Section -->
       <div class="usecase-section" id="useCaseContainer" style="display:none;">
         <h3>Use Case</h3>
         <div id="modalUseCase"></div>
@@ -333,7 +348,6 @@
   </div>
 
   <script>
-    // Attempt to restore theme from localStorage
     (function initTheme() {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
@@ -345,12 +359,8 @@
       const currentTheme = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       document.body.setAttribute('data-theme', currentTheme);
       localStorage.setItem('theme', currentTheme);
-        
-      // Update button icon
       const icon = document.querySelector('.theme-icon');
       icon.textContent = currentTheme === 'light' ? '☀️' : '🌙';
-        
-      // Optional: Add slight animation effect when switching themes
       document.body.style.transition = "background 0.5s ease, color 0.5s ease";
     }
 
@@ -359,14 +369,11 @@
       document.getElementById('pluginModal').classList.remove('show');
     }
 
-    // Parse triple backticks for <pre> blocks and single backticks for <code> inline
     function parseUseCase(text) {
       if (!text) return '';
-      // Replace triple backticks (including newlines in between)
       text = text.replace(/```([\s\S]*?)```/g, (match, p1) => {
         return `<pre>${p1}</pre>`;
       });
-      // Replace single backticks
       text = text.replace(/`([^`]+)`/g, (match, p1) => {
         return `<code>${p1}</code>`;
       });
@@ -382,38 +389,31 @@
       const useCaseContainer = document.getElementById('useCaseContainer');
       const modalUseCase = document.getElementById('modalUseCase');
 
-      // Set plugin icon and name
       modalIcon.src = plugin.icon;
       modalIcon.alt = plugin.name;
       modalTitle.textContent = plugin.name;
 
-      // Clear old content
       modalFeatures.innerHTML = '';
       modalRequirements.innerHTML = '';
       modalUseCase.innerHTML = '';
       useCaseContainer.style.display = 'none';
 
-      // Fill features
-          if (plugin.features) {
-          plugin.features.forEach(feat => {
-            const li = document.createElement('li');
-            // Use parseUseCase so backticks become code blocks
-            li.innerHTML = parseUseCase(feat);
-            modalFeatures.appendChild(li);
-          });
-        }
+      if (plugin.features) {
+        plugin.features.forEach(feat => {
+          const li = document.createElement('li');
+          li.innerHTML = parseUseCase(feat);
+          modalFeatures.appendChild(li);
+        });
+      }
 
-      // Fill requirements
-            if (plugin.requirements) {
-          plugin.requirements.forEach(req => {
-            const li = document.createElement('li');
-            // Use parseUseCase here too
-            li.innerHTML = parseUseCase(req);
-            modalRequirements.appendChild(li);
-          });
-        }
+      if (plugin.requirements) {
+        plugin.requirements.forEach(req => {
+          const li = document.createElement('li');
+          li.innerHTML = parseUseCase(req);
+          modalRequirements.appendChild(li);
+        });
+      }
 
-      // If plugin has a 'useCase' field
       if (plugin.useCase) {
         const parsed = parseUseCase(plugin.useCase);
         if (parsed.trim()) {
@@ -425,404 +425,506 @@
       modal.classList.add('show');
     }
 
-    // Filter search
-    document.getElementById('pluginSearch').addEventListener('input', (e) => {
-      const searchTerm = e.target.value.toLowerCase();
-      document.querySelectorAll('.plugin-card').forEach(card => {
-        const name = card.querySelector('h3').textContent.toLowerCase();
-        card.style.display = name.includes(searchTerm) ? 'block' : 'none';
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterPlugins();
       });
     });
 
-    // The big plugin list, preserving your data from before.
-    // Example 'useCase' with inline code/backticks usage in the first plugin.
-    const plugins = [
-    {
-      name: "AutoMTA",
-      icon: "icons/mage_icon.png",
-      requirements: ["60+ Magic recommended"],
-      features: ["Automates MTA activities"]
-    },
-    {
-      name: "Auto Thieving",
-      icon: "icons/thieving_icon.png",
-      requirements: ["Depends on your activity"],
-      features: ["Pickpocket automation"]
-    },
-    {
-      name: "Auto MLM",
-      icon: "icons/mining_icon.png",
-      requirements: ["30+ Mining"],
-      features: ["Full Motherlode Mine automation"]
-    },
-    {
-      name: "Auto Wintertodt",
-      icon: "icons/firemaking_icon.png",
-      requirements: ["50+ Firemaking", "Three pieces of warm clothing"],
-      features: ["Automatic brazier lighting"]
-    },
-    {
-      name: "Auto Fletching",
-      icon: "icons/fletching_icon.png",
-      requirements: ["Appropriate logs"],
-      features: ["All bow, dart, or arrow creation"]
-    },
-    {
-      name: "Auto Cooking",
-      icon: "icons/cooking_icon.png",
-      requirements: ["Raw food"],
-      features: ["Automated cooking & banking"]
-    },
-    {
-      name: "Auto Blast Furnace",
-      icon: "icons/smithing_icon.png",
-      requirements: ["60+ Smithing recommended"],
-      features: ["Automates bar smelting"]
-    },
-    {
-      name: "Auto Construction",
-      icon: "icons/construction_icon.png",
-      requirements: ["Planks & nails"],
-      features: ["Building mode automation"]
-    },
-    {
-      name: "Auto Crafting",
-      icon: "icons/crafting_icon.png",
-      requirements: ["Crafting materials"],
-      features: ["Gem cutting, jewelry, etc."]
-    },
-    {
-      name: "Auto Fisher",
-      icon: "icons/fishing_icon.png",
-      requirements: ["Fishing rod/net"],
-      features: ["Auto fish & bank"]
-    },
-    {
-      name: "Auto Driftnet",
-      icon: "icons/fishing_icon.png",
-      requirements: ["Underwater gear"],
-      features: ["Driftnet fishing automation"]
-    },
-    {
-      name: "Auto Bankstander",
-      icon: "icons/bank_icon.png",
-      requirements: ["Items to process"],
-      features: ["Idle skill training at bank"]
-    },
-    {
-      name: "Auto Herblore",
-      icon: "icons/herblore_icon.png",
-      requirements: ["Herbs and secondaries"],
-      features: ["Auto potion making"]
-    },
-    {
-      name: "Auto Herbiboar",
-      icon: "icons/herbiboar_icon.png",
-      requirements: ["80+ Hunter recommended"],
-      features: ["Automated herbiboar tracking"]
-    },
-    {
-      name: "Auto Mining",
-      icon: "icons/mining_icon.png",
-      requirements: ["Pickaxe"],
-      features: ["Auto-mining in various spots"]
-    },
-    {
-      name: "Auto Smithing",
-      icon: "icons/smithing_icon.png",
-      requirements: ["Ores or bars"],
-      features: ["Anvil forging automation"]
-    },
-    {
-      name: "Auto Looter",
-      icon: "icons/looting_icon.png",
-      requirements: ["Optional: Telegrab spells"],
-      features: ["Picks up drops automatically"]
-    },
-    {
-      name: "Auto Trawler",
-      icon: "icons/angler_icon.png",
-      requirements: ["Fishing trawler minigame access"],
-      features: ["Auto fix net, collect fish"]
-    },
-    {
-      name: "Auto Giants Foundry",
-      icon: "icons/foundry_icon.png",
-      requirements: ["Steel or better bars"],
-      features: ["Automatic blade forging"]
-    },
-    {
-      name: "Auto Chop Burn",
-      icon: "icons/woodcutting_icon.png",
-      requirements: ["Axe, tinderbox"],
-      features: ["Chop logs & burn them automatically"]
-    },
-    {
-      name: "Auto Temple Trekking",
-      icon: "icons/trekking_icon.png",
-      requirements: ["Quest prerequisites"],
-      features: ["Automated route selection"]
-    },
-    {
-      name: "Auto Agility",
-      icon: "icons/agility_icon.png",
-      requirements: ["Stamina potions"],
-      features: [
-        "Supports most Agility Courses.",
-        "Customizable sleep mechanism.",
-      ], 
-      useCase: ""
-    },
-    {
-      name: "Auto Mahogany Homes",
-      icon: "icons/mahogany_homes_icon.png",
-      requirements: ["40+ Construction"],
-      features: ["Automated contract completion"]
-    },
-    {
-      name: "Auto Shamans",
-      icon: "icons/shamans_icon.png",
-      requirements: ["75+ Combat recommended"],
-      features: ["Auto Lizardman Shamans"]
-    },
-    {
-      name: "Auto Fight Caves",
-      icon: "icons/jad_icon.png",
-      requirements: ["70+ Combat recommended"],
-      features: ["Automated waves & prayer flicks"]
-    },
-    {
-      name: "Auto Fossil Teaks",
-      icon: "icons/teak_icon.png",
-      requirements: ["Jadinkos maybe?"],
-      features: ["Chop teak in Fossil Island"]
-    },
-    {
-      name: "Auto Safe Guard",
-      icon: "icons/safeguard_icon.png",
-      requirements: ["N/A"],
-      features: ["Plugin Controller", "Disable plugin of your choice if your condition is met.", ""]
-    },
-    {
-      name: "Auto Demonics",
-      icon: "icons/zenyte_icon.png",
-      requirements: ["70+ Combat stats"],
-      features: ["Automatic demon hunting"]
-    },
-    {
-      name: "Auto Bursting",
-      icon: "icons/bursting_icon.png",
-      requirements: ["70+ Magic recommended"],
-      features: ["Auto-chinchompa or burst tasks"]
-    },
-    {
-      name: "Auto Tormenteds",
-      icon: "icons/tormented_demon_icon.png",
-      requirements: ["Access to demonics area?"],
-      features: ["Auto Tormented Demons?"]
-    },
-    {
-      name: "Auto Ammonite Crabs",
-      icon: "icons/ammonite_crab_icon.png",
-      requirements: ["Access to Fossil Island"],
-      features: ["Auto crab fighting"]
-    },
-    {
-      name: "Auto Sarachnis",
-      icon: "icons/sarachnis_icon.png",
-      requirements: ["Adequate combat stats"],
-      features: ["Auto Sarachnis kill"]
-    },
-    {
-      name: "Auto Scurrius",
-      icon: "icons/scurrius_icon.png",
-      requirements: ["Possibly new area?"],
-      features: ["Automates scurrius??"]
-    },
-    {
-      name: "Auto Dragon Slayer",
-      icon: "icons/dragon_icon.png",
-      requirements: ["Dragon-slaying gear"],
-      features: ["Auto kills dragons?"]
-    },
-    {
-      name: "Auto Woodcutting",
-      icon: "icons/woodcutting_icon.png",
-      requirements: ["Axe"],
-      features: ["Auto-chop any trees"]
-    },
-    {
-      name: "Auto NMZ",
-      icon: "icons/combat_icon.png",
-      requirements: ["NMZ quest bosses"],
-      features: ["Auto nmz training"]
-    },
-    {
-      name: "Auto Hunter",
-      icon: "icons/hunter_icon.png",
-      requirements: ["Box traps"],
-      features: ["Auto Hunter - coming soon", "Chins, Birds, Salamanders, Butterflies"]
-    },
-    {
-      name: "Auto QOL",
-      icon: "icons/qol_icon.png",
-      requirements: ["N/A"],
-      features: ["Various QOL changes?"]
-    },
-    {
-      name: "Auto Pvm Prayers",
-      icon: "icons/prayer_icon.png",
-      requirements: ["43+ Prayer"],
-      features: ["Auto overhead toggling"]
-    },
-    {
-      name: "Auto Shopper",
-      icon: "icons/bank_icon.png",
-      requirements: ["Coins"],
-      features: ["Auto restock from shops"]
-    },
-    {
-      name: "Auto Combat",
-      icon: "icons/combat_icon.png",
-      requirements: ["Combat gear"],
-      features: ["Auto fight any NPC?"]
-    },
-    {
-      name: "Kitten Feeder",
-      icon: "icons/kitten_icon.png",
-      requirements: ["A kitten"],
-      features: ["Auto feed kitten milk"]
-    },
-    {
-      name: "Auto Blue Dragons",
-      icon: "icons/blue_dragon_icon.png",
-      requirements: ["Anti-dragon shield"],
-      features: ["Auto kill blue dragons"]
-    },
-    {
-      name: "Auto Tele Tabs",
-      icon: "icons/tab_icon.png",
-      requirements: ["Lectern & runes"],
-      features: ["Auto create tele tabs"]
-    },
-    {
-      name: "Auto WC Guild Plank Make",
-      icon: "icons/plank_icon.png",
-      requirements: ["Woodcutting guild access"],
-      features: ["Cut logs, make planks"]
-    },
-    {
-      name: "Auto Tithe Farm",
-      icon: "icons/farming_icon.png",
-      requirements: ["34+ Farming"],
-      features: ["Auto Tithe Farm runs"]
-    },
-    {
-      name: "Auto Mole",
-      icon: "icons/mole_icon.png",
-      requirements: ["Combat gear"],
-      features: ["Auto giant mole farming"]
-    },
-    {
-      name: "Auto Scouter",
-      icon: "icons/scouter_icon.png",
-      requirements: ["N/A"],
-      features: ["Scout raids or areas?"]
-    },
-    {
-      name: "Auto Effect Timers",
-      icon: "icons/bursting_icon.png",
-      requirements: ["N/A"],
-      features: ["Shows/auto manages effect timers"]
-    },
-    {
-      name: "Auto Hide Under",
-      icon: "icons/skull_icon.png",
-      requirements: ["N/A"],
-      features: ["Hide players/NPCs visually?"]
-    },
-    {
-      name: "Auto Spec Bar",
-      icon: "icons/specbar_icon.png",
-      requirements: ["Weapon with special attack"],
-      features: ["Auto spec usage"]
-    },
-    {
-      name: "Auto Poh Prayer",
-      icon: "icons/prayer_icon.png",
-      requirements: ["POH with altar"],
-      features: ["Auto altar usage"]
-    },
-    {
-      name: "Auto Stun Alch",
-      icon: "icons/highalch_icon.png",
-      requirements: ["Magic runes"],
-      features: ["Stun+Alch automation"]
-    },
-    {
-      name: "Auto Relog",
-      icon: "icons/logout_icon.png",
-      requirements: ["N/A"],
-      features: ["Auto relog after DC"]
-    },
-    {
-      name: "Auto Trouble Brewing",
-      icon: "icons/trouble_brewing_icon.png",
-      requirements: ["Minigame access"],
-      features: ["Auto gather resources?"]
-    },
-    {
-      name: "Auto Ahk",
-      icon: "icons/skull_icon.png",
-      requirements: ["N/A"],
-      features: ["Sends custom AHK scripts?"]
-    },
-    {
-      name: "Auto Lumby Fm",
-      icon: "icons/firemaking_icon.png",
-      requirements: ["Logs + tinderbox"],
-      features: ["Auto Firemaking in lumby?"]
-    },
-    {
-      name: "Auto Farm Runs",
-      icon: "icons/farming_icon.png",
-      requirements: ["Seeds & patches"],
-      features: ["Auto do normal farm runs"]
-    },
-    {
-      name: "Auto Pyramid Plunder",
-      icon: "icons/pyramid_plunder_icon.png",
-      requirements: ["21+ Thieving"],
-      features: ["Auto PP chest + scepters"]
-    },
-    {
-      name: "Auto Upkeep",
-      icon: "icons/anglerfish_icon.png",
-      requirements: ["N/A"],
-      features: ["Auto recharges items?"]
-    },
-    {
-      name: "Auto Sand Crabs",
-      icon: "icons/sand_crab_icon.png",
-      requirements: ["Access to crab areas"],
-      features: ["Auto AFK sand crabs"]
-    },
-    {
-      name: "Auto LMS",
-      icon: "icons/skull_icon.png",
-      requirements: ["Combat recommended"],
-      features: ["Auto Last Man Standing?"]
+    function filterPlugins() {
+      const searchTerm = document.getElementById('pluginSearch').value.toLowerCase();
+      const category = document.querySelector('.category-btn.active').dataset.category;
+      
+      document.querySelectorAll('.plugin-card').forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        const cardCategory = card.dataset.category;
+        
+        const matchesSearch = name.includes(searchTerm);
+        const matchesCategory = category === 'all' || cardCategory === category;
+        
+        card.style.display = matchesSearch && matchesCategory ? 'block' : 'none';
+      });
     }
-    ];
 
-    // Build plugin cards
+    document.getElementById('pluginSearch').addEventListener('input', () => filterPlugins());
+
+    const plugins = [
+  {
+    name: "AutoMTA",
+    icon: "icons/mage_icon.png",
+    category: "minigames",
+    requirements: ["60+ Magic recommended"],
+    features: ["Automates MTA activities"],
+    useCase: "Automates solving puzzles in the Mage Training Arena minigame, including Alchemist's Playground and Enchantment Chamber."
+  },
+  {
+    name: "Auto Thieving",
+    icon: "icons/thieving_icon.png",
+    category: "skilling",
+    requirements: ["Depends on your activity"],
+    features: ["Pickpocket automation"],
+    useCase: "Automates pickpocketing NPCs like Ardougne Knights or Master Farmers with anti-ban measures."
+  },
+  {
+    name: "Auto MLM",
+    icon: "icons/mining_icon.png",
+    category: "skilling",
+    requirements: ["30+ Mining"],
+    features: ["Full Motherlode Mine automation"],
+    useCase: "Handles all aspects of Motherlode Mine including ore mining, sack management, and deposit."
+  },
+  {
+    name: "Auto Wintertodt",
+    icon: "icons/firemaking_icon.png",
+    category: "minigames",
+    requirements: ["50+ Firemaking", "Three pieces of warm clothing"],
+    features: ["Automatic brazier lighting"],
+    useCase: "Completes Wintertodt matches with optimal point scoring and supply management."
+  },
+  {
+    name: "Auto Fletching",
+    icon: "icons/fletching_icon.png",
+    category: "skilling",
+    requirements: ["Appropriate logs"],
+    features: ["All bow, dart, or arrow creation"],
+    useCase: "Automates the creation of bows, darts, or arrows from logs and other materials."
+  },
+  {
+    name: "Auto Cooking",
+    icon: "icons/cooking_icon.png",
+    category: "skilling",
+    requirements: ["Raw food"],
+    features: ["Automated cooking & banking"],
+    useCase: "Automates cooking raw food and banking cooked items for efficient cooking training."
+  },
+  {
+    name: "Auto Blast Furnace",
+    icon: "icons/smithing_icon.png",
+    category: "skilling",
+    requirements: ["60+ Smithing recommended"],
+    features: ["Automates bar smelting"],
+    useCase: "Automates the process of smelting bars at the Blast Furnace for efficient Smithing training."
+  },
+  {
+    name: "Auto Construction",
+    icon: "icons/construction_icon.png",
+    category: "skilling",
+    requirements: ["Planks & nails"],
+    features: ["Building mode automation"],
+    useCase: "Automates building and removing furniture in your Player-Owned House for Construction training."
+  },
+  {
+    name: "Auto Crafting",
+    icon: "icons/crafting_icon.png",
+    category: "skilling",
+    requirements: ["Crafting materials"],
+    features: ["Gem cutting, jewelry, etc."],
+    useCase: "Automates crafting activities such as gem cutting, jewelry making, and leatherworking."
+  },
+  {
+    name: "Auto Fisher",
+    icon: "icons/fishing_icon.png",
+    category: "skilling",
+    requirements: ["Fishing rod/net"],
+    features: ["Auto fish & bank"],
+    useCase: "Automates fishing at various locations and banking the caught fish."
+  },
+  {
+    name: "Auto Driftnet",
+    icon: "icons/fishing_icon.png",
+    category: "skilling",
+    requirements: ["Underwater gear"],
+    features: ["Driftnet fishing automation"],
+    useCase: "Automates driftnet fishing, including setting up nets and collecting fish."
+  },
+  {
+    name: "Auto Bankstander",
+    icon: "icons/bank_icon.png",
+    category: "skilling",
+    requirements: ["Items to process"],
+    features: ["Idle skill training at bank"],
+    useCase: "Automates bankstanding skills such as Fletching, Herblore, and Crafting."
+  },
+  {
+    name: "Auto Herblore",
+    icon: "icons/herblore_icon.png",
+    category: "skilling",
+    requirements: ["Herbs and secondaries"],
+    features: ["Auto potion making"],
+    useCase: "Automates the creation of potions by combining herbs and secondary ingredients."
+  },
+  {
+    name: "Auto Herbiboar",
+    icon: "icons/herbiboar_icon.png",
+    category: "skilling",
+    requirements: ["80+ Hunter recommended"],
+    features: ["Automated herbiboar tracking"],
+    useCase: "Automates tracking and catching Herbiboars on Fossil Island."
+  },
+  {
+    name: "Auto Mining",
+    icon: "icons/mining_icon.png",
+    category: "skilling",
+    requirements: ["Pickaxe"],
+    features: ["Auto-mining in various spots"],
+    useCase: "Automates mining ores at various locations and banking them."
+  },
+  {
+    name: "Auto Smithing",
+    icon: "icons/smithing_icon.png",
+    category: "skilling",
+    requirements: ["Ores or bars"],
+    features: ["Anvil forging automation"],
+    useCase: "Automates smithing items at anvils using ores or bars."
+  },
+  {
+    name: "Auto Looter",
+    icon: "icons/looting_icon.png",
+    category: "utility",
+    requirements: ["Optional: Telegrab spells"],
+    features: ["Picks up drops automatically"],
+    useCase: "Automates looting drops from monsters or the ground."
+  },
+  {
+    name: "Auto Trawler",
+    icon: "icons/angler_icon.png",
+    category: "minigames",
+    requirements: ["Fishing trawler minigame access"],
+    features: ["Auto fix net, collect fish"],
+    useCase: "Automates the Fishing Trawler minigame for efficient Fishing training."
+  },
+  {
+    name: "Auto Giants Foundry",
+    icon: "icons/foundry_icon.png",
+    category: "minigames",
+    requirements: ["Steel or better bars"],
+    features: ["Automatic blade forging"],
+    useCase: "Automates the Giants' Foundry minigame for efficient Smithing training."
+  },
+  {
+    name: "Auto Chop Burn",
+    icon: "icons/woodcutting_icon.png",
+    category: "skilling",
+    requirements: ["Axe, tinderbox"],
+    features: ["Chop logs & burn them automatically"],
+    useCase: "Automates chopping logs and burning them for Firemaking training."
+  },
+  {
+    name: "Auto Temple Trekking",
+    icon: "icons/trekking_icon.png",
+    category: "minigames",
+    requirements: ["Quest prerequisites"],
+    features: ["Automated route selection"],
+    useCase: "Automates the Temple Trekking minigame for rewards and training."
+  },
+  {
+    name: "Auto Agility",
+    icon: "icons/agility_icon.png",
+    category: "skilling",
+    requirements: ["Stamina potions"],
+    features: ["Supports most Agility Courses.", "Customizable sleep mechanism."],
+    useCase: "Automates running Agility courses for efficient training."
+  },
+  {
+    name: "Auto Mahogany Homes",
+    icon: "icons/mahogany_homes_icon.png",
+    category: "minigames",
+    requirements: ["40+ Construction"],
+    features: ["Automated contract completion"],
+    useCase: "Automates the Mahogany Homes minigame for Construction training."
+  },
+  {
+    name: "Auto Shamans",
+    icon: "icons/shamans_icon.png",
+    category: "pvm",
+    requirements: ["75+ Combat recommended"],
+    features: ["Auto Lizardman Shamans"],
+    useCase: "Automates killing Lizardman Shamans for drops and experience."
+  },
+  {
+    name: "Auto Fight Caves",
+    icon: "icons/jad_icon.png",
+    category: "pvm",
+    requirements: ["70+ Combat recommended"],
+    features: ["Automated waves & prayer flicks"],
+    useCase: "Automates the TzHaar Fight Cave minigame, including Jad fight."
+  },
+  {
+    name: "Auto Fossil Teaks",
+    icon: "icons/teak_icon.png",
+    category: "skilling",
+    requirements: ["Jadinkos maybe?"],
+    features: ["Chop teak in Fossil Island"],
+    useCase: "Automates chopping teak trees on Fossil Island."
+  },
+  {
+    name: "Auto Safe Guard",
+    icon: "icons/safeguard_icon.png",
+    category: "utility",
+    requirements: ["N/A"],
+    features: ["Plugin Controller", "Disable plugin of your choice if your condition is met."],
+    useCase: "Automatically disables plugins based on specific conditions for safety."
+  },
+  {
+    name: "Auto Demonics",
+    icon: "icons/zenyte_icon.png",
+    category: "pvm",
+    requirements: ["70+ Combat stats"],
+    features: ["Automatic demon hunting"],
+    useCase: "Automates killing demonic gorillas for drops and experience."
+  },
+  {
+    name: "Auto Bursting",
+    icon: "icons/bursting_icon.png",
+    category: "pvm",
+    requirements: ["70+ Magic recommended"],
+    features: ["Auto-chinchompa or burst tasks"],
+    useCase: "Automates bursting or chinning for Magic and Ranged training."
+  },
+  {
+    name: "Auto Tormenteds",
+    icon: "icons/tormented_demon_icon.png",
+    category: "pvm",
+    requirements: ["Access to demonics area?"],
+    features: ["Auto Tormented Demons?"],
+    useCase: "Automates killing Tormented Demons for drops and experience."
+  },
+  {
+    name: "Auto Ammonite Crabs",
+    icon: "icons/ammonite_crab_icon.png",
+    category: "pvm",
+    requirements: ["Access to Fossil Island"],
+    features: ["Auto crab fighting"],
+    useCase: "Automates fighting Ammonite Crabs for Combat training."
+  },
+  {
+    name: "Auto Sarachnis",
+    icon: "icons/sarachnis_icon.png",
+    category: "pvm",
+    requirements: ["Adequate combat stats"],
+    features: ["Auto Sarachnis kill"],
+    useCase: "Automates killing Sarachnis for drops and experience."
+  },
+  {
+    name: "Auto Scurrius",
+    icon: "icons/scurrius_icon.png",
+    category: "pvm",
+    requirements: ["Possibly new area?"],
+    features: ["Automates scurrius??"],
+    useCase: "Automates killing Scurrius for drops and experience."
+  },
+  {
+    name: "Auto Dragon Slayer",
+    icon: "icons/dragon_icon.png",
+    category: "pvm",
+    requirements: ["Dragon-slaying gear"],
+    features: ["Auto kills dragons?"],
+    useCase: "Automates killing dragons for drops and experience."
+  },
+  {
+    name: "Auto Woodcutting",
+    icon: "icons/woodcutting_icon.png",
+    category: "skilling",
+    requirements: ["Axe"],
+    features: ["Auto-chop any trees"],
+    useCase: "Automates chopping trees for Woodcutting training."
+  },
+  {
+    name: "Auto NMZ",
+    icon: "icons/combat_icon.png",
+    category: "minigames",
+    requirements: ["NMZ quest bosses"],
+    features: ["Auto nmz training"],
+    useCase: "Automates the Nightmare Zone minigame for Combat training."
+  },
+  {
+    name: "Auto Hunter",
+    icon: "icons/hunter_icon.png",
+    category: "skilling",
+    requirements: ["Box traps"],
+    features: ["Auto Hunter - coming soon", "Chins, Birds, Salamanders, Butterflies"],
+    useCase: "Automates Hunter training by catching chinchompas, birds, and other creatures."
+  },
+  {
+    name: "Auto QOL",
+    icon: "icons/qol_icon.png",
+    category: "utility",
+    requirements: ["N/A"],
+    features: ["Various QOL changes?"],
+    useCase: "Provides various quality-of-life improvements for gameplay."
+  },
+  {
+    name: "Auto Pvm Prayers",
+    icon: "icons/prayer_icon.png",
+    category: "pvm",
+    requirements: ["43+ Prayer"],
+    features: ["Auto overhead toggling"],
+    useCase: "Automatically toggles overhead prayers during PvM encounters."
+  },
+  {
+    name: "Auto Shopper",
+    icon: "icons/bank_icon.png",
+    category: "utility",
+    requirements: ["Coins"],
+    features: ["Auto restock from shops"],
+    useCase: "Automates purchasing items from shops for restocking supplies."
+  },
+  {
+    name: "Auto Combat",
+    icon: "icons/combat_icon.png",
+    category: "pvm",
+    requirements: ["Combat gear"],
+    features: ["Auto fight any NPC?"],
+    useCase: "Automates combat with NPCs for training or drops."
+  },
+  {
+    name: "Kitten Feeder",
+    icon: "icons/kitten_icon.png",
+    category: "utility",
+    requirements: ["A kitten"],
+    features: ["Auto feed kitten milk"],
+    useCase: "Automates feeding your kitten to keep it happy and healthy."
+  },
+  {
+    name: "Auto Blue Dragons",
+    icon: "icons/blue_dragon_icon.png",
+    category: "pvm",
+    requirements: ["Anti-dragon shield"],
+    features: ["Auto kill blue dragons"],
+    useCase: "Automates killing blue dragons for drops and experience."
+  },
+  {
+    name: "Auto Tele Tabs",
+    icon: "icons/tab_icon.png",
+    category: "utility",
+    requirements: ["Lectern & runes"],
+    features: ["Auto create tele tabs"],
+    useCase: "Automates creating teleportation tablets at a lectern."
+  },
+  {
+    name: "Auto WC Guild Plank Make",
+    icon: "icons/plank_icon.png",
+    category: "utility",
+    requirements: ["Woodcutting guild access"],
+    features: ["Cut logs, make planks"],
+    useCase: "Automates cutting logs and making planks at the Woodcutting Guild."
+  },
+  {
+    name: "Auto Tithe Farm",
+    icon: "icons/farming_icon.png",
+    category: "minigames",
+    requirements: ["34+ Farming"],
+    features: ["Auto Tithe Farm runs"],
+    useCase: "Automates the Tithe Farm minigame for Farming training."
+  },
+  {
+    name: "Auto Mole",
+    icon: "icons/mole_icon.png",
+    category: "pvm",
+    requirements: ["Combat gear"],
+    features: ["Auto giant mole farming"],
+    useCase: "Automates killing the Giant Mole for drops and experience."
+  },
+  {
+    name: "Auto Scouter",
+    icon: "icons/scouter_icon.png",
+    category: "pvp",
+    requirements: ["N/A"],
+    features: ["Scout raids or areas?"],
+    useCase: "Automates scouting raids or areas for optimal gameplay."
+  },
+  {
+    name: "Auto Effect Timers",
+    icon: "icons/bursting_icon.png",
+    category: "pvp",
+    requirements: ["N/A"],
+    features: ["Shows/auto manages effect timers"],
+    useCase: "Automatically tracks and manages effect timers during gameplay."
+  },
+  {
+    name: "Auto Hide Under",
+    icon: "icons/skull_icon.png",
+    category: "pvp",
+    requirements: ["N/A"],
+    features: ["Hide players/NPCs visually?"],
+    useCase: "Automatically hides players or NPCs for a cleaner interface."
+  },
+  {
+    name: "Auto Spec Bar",
+    icon: "icons/specbar_icon.png",
+    category: "pvp",
+    requirements: ["Weapon with special attack"],
+    features: ["Auto spec usage"],
+    useCase: "Automates using special attacks during combat."
+  },
+  {
+    name: "Auto Poh Prayer",
+    icon: "icons/prayer_icon.png",
+    category: "skilling",
+    requirements: ["POH with altar"],
+    features: ["Auto altar usage"],
+    useCase: "Automates using the altar in your Player-Owned House for Prayer training."
+  },
+  {
+    name: "Auto Stun Alch",
+    icon: "icons/highalch_icon.png",
+    category: "skilling",
+    requirements: ["Magic runes"],
+    features: ["Stun+Alch automation"],
+    useCase: "Automates stunning NPCs and alching items for Magic training."
+  },
+  {
+    name: "Auto Relog",
+    icon: "icons/logout_icon.png",
+    category: "utility",
+    requirements: ["N/A"],
+    features: ["Auto relog after DC"],
+    useCase: "Automatically relogs after a disconnection."
+  },
+  {
+    name: "Auto Trouble Brewing",
+    icon: "icons/trouble_brewing_icon.png",
+    category: "minigames",
+    requirements: ["Minigame access"],
+    features: ["Auto gather resources?"],
+    useCase: "Automates the Trouble Brewing minigame for rewards."
+  },
+  {
+    name: "Auto Ahk",
+    icon: "icons/skull_icon.png",
+    category: "pvp",
+    requirements: ["N/A"],
+    features: ["Sends custom AHK scripts?"],
+    useCase: "Automates sending custom AutoHotkey scripts for advanced functionality."
+  },
+  {
+    name: "Auto Lumby Fm",
+    icon: "icons/firemaking_icon.png",
+    category: "skilling",
+    requirements: ["Logs + tinderbox"],
+    features: ["Auto Firemaking in lumby?"],
+    useCase: "Automates Firemaking training in Lumbridge."
+  },
+  {
+    name: "Auto Farm Runs",
+    icon: "icons/farming_icon.png",
+    category: "skilling",
+    requirements: ["Seeds & patches"],
+    features: ["Auto do normal farm runs"],
+    useCase: "Automates farming runs for efficient Farming training."
+  },
+];
+
+
     const pluginGrid = document.getElementById('pluginGrid');
     plugins.forEach(plugin => {
       const card = document.createElement('div');
       card.className = 'plugin-card';
+      card.setAttribute('data-category', plugin.category.toLowerCase());
       card.onclick = () => openPluginModal(plugin);
 
-      // Card header
       card.innerHTML = `
         <div class="plugin-header">
           <img src="${plugin.icon}" class="plugin-icon" alt="${plugin.name}">
