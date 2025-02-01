@@ -86,6 +86,23 @@
       text-shadow: 2px 2px 4px rgba(102, 77, 48, 0.7);
     }
 
+    .free-tag {
+      background: #00ff88;
+      color: #000;
+      font-weight: bold;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      text-transform: uppercase;
+    }
+
+    .plugin-header {
+      position: relative; /* Ensures the free-tag stays inside the card */
+    }
+
     .theme-toggle {
       background: linear-gradient(135deg, #1e1e1e, #333);
       border: 2px solid var(--border);
@@ -753,7 +770,8 @@
     category: "utility",
     requirements: ["N/A"],
     features: ["Various QOL changes?"],
-    useCase: "Provides various quality-of-life improvements for gameplay."
+    useCase: "Provides various quality-of-life improvements for gameplay.",
+    free: true
   },
   {
     name: "Auto Pvm Prayers",
@@ -761,7 +779,8 @@
     category: "pvm",
     requirements: ["43+ Prayer"],
     features: ["Auto overhead toggling"],
-    useCase: "Automatically toggles overhead prayers during PvM encounters."
+    useCase: "Automatically toggles overhead prayers during PvM encounters.",
+    free: true
   },
   {
     name: "Auto Shopper",
@@ -793,7 +812,8 @@
     category: "pvm",
     requirements: ["Anti-dragon shield"],
     features: ["Auto kill blue dragons"],
-    useCase: "Automates killing blue dragons for drops and experience."
+    useCase: "Automates killing blue dragons for drops and experience.",
+    free: true
   },
   {
     name: "Auto Tele Tabs",
@@ -817,7 +837,8 @@
     category: "minigames",
     requirements: ["34+ Farming"],
     features: ["Auto Tithe Farm runs"],
-    useCase: "Automates the Tithe Farm minigame for Farming training."
+    useCase: "Automates the Tithe Farm minigame for Farming training.",
+    free: true
   },
   {
     name: "Auto Mole",
@@ -825,15 +846,17 @@
     category: "pvm",
     requirements: ["Combat gear"],
     features: ["Auto giant mole farming"],
-    useCase: "Automates killing the Giant Mole for drops and experience."
+    useCase: "Automates killing the Giant Mole for drops and experience.",
+    free: true
   },
   {
     name: "Auto Scouter",
     icon: "icons/scouter_icon.png",
     category: "pvp",
     requirements: ["N/A"],
-    features: ["Scout raids or areas?"],
-    useCase: "Automates scouting raids or areas for optimal gameplay."
+    features: ["Scout players"],
+    useCase: "Automates players and sends off data to your desired Webhook.",
+    free: true
   },
   {
     name: "Auto Effect Timers",
@@ -918,21 +941,26 @@
 ];
 
 
-    const pluginGrid = document.getElementById('pluginGrid');
-    plugins.forEach(plugin => {
-      const card = document.createElement('div');
-      card.className = 'plugin-card';
-      card.setAttribute('data-category', plugin.category.toLowerCase());
-      card.onclick = () => openPluginModal(plugin);
+const pluginGrid = document.getElementById('pluginGrid');
 
-      card.innerHTML = `
-        <div class="plugin-header">
-          <img src="${plugin.icon}" class="plugin-icon" alt="${plugin.name}">
-          <h3>${plugin.name}</h3>
-        </div>
-      `;
-      pluginGrid.appendChild(card);
-    });
+  plugins.forEach(plugin => {
+    const card = document.createElement('div');
+    card.className = 'plugin-card';
+    card.setAttribute('data-category', plugin.category.toLowerCase());
+    card.onclick = () => openPluginModal(plugin);
+
+    // Add "FREE" label if the plugin is free
+    const freeLabel = plugin.free ? `<span class="free-label">FREE</span>` : '';
+
+    card.innerHTML = `
+    <div class="plugin-header">
+      <img src="${plugin.icon}" class="plugin-icon" alt="${plugin.name}">
+      <h3>${plugin.name}</h3>
+      ${plugin.free ? '<span class="free-tag">FREE</span>' : ''}
+    </div>
+    `;
+    pluginGrid.appendChild(card);
+  });
   </script>
 </body>
 </html>
